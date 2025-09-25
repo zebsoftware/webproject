@@ -1,10 +1,9 @@
 import React from "react";
-
-export default function Header() {
+ function Header() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-success sticky-top border-bottom">
+    <nav className="navbar navbar-expand-lg sticky-top bg-primary  border-bottom">
       <div className="container-fluid">
-        <a className="navbar-brand fw-bold text-white" href="#">ZMart</a>
+        <a className="navbar-brand fw-bold text-white" >ZStore</a>
         <button
           className="navbar-toggler"
           type="button"
@@ -31,3 +30,4 @@ export default function Header() {
     </nav>
   );
 }
+export default Header;

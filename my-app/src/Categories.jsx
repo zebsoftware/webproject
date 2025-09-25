@@ -7,7 +7,7 @@ const categories = [
   { name: "Electronics", image: "https://images.unsplash.com/photo-1645684084216-b52ba9e12aaf?w=1080", description: "Tech essentials" }
 ];
 
-export default function Categories() {
+ function Categories() {
   return (
     <section className="py-5 bg-white">
       <div className="container">
@@ -36,3 +36,4 @@ export default function Categories() {
     </section>
   );
 }
+export default Categories;

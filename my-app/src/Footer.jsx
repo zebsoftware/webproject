@@ -1,6 +1,4 @@
-import React from "react";
-
-export default function Footer() {
+ function Footer() {
   return (
     <footer className="bg-success text-white py-4">
       <div className="container">
@@ -26,12 +24,9 @@ export default function Footer() {
           </div>
 
         </div>
-
-        <hr className="border-light" />
-        <div className="text-center">
-          <small>© 2025 ZMart. All rights reserved.</small>
-        </div>
+        
       </div>
     </footer>
   );
 }
+export default Footer;

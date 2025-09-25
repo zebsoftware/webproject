@@ -1,6 +1,5 @@
 import React from "react";
-
-export default function Hero() {
+ function Hero() {
   return (
     <section className="py-5" style={{ background: "linear-gradient(to right, #f8f9fa, #e9ecef)" }}>
       <div className="container">
@@ -40,3 +39,4 @@ export default function Hero() {
     </section>
   );
 }
+export default Hero;

@@ -5,6 +5,7 @@ import Categories from "./Categories";
 import FeaturedProducts from "./FeaturedProducts";
 import Newsletter from "./Newsletter";
 import Footer from "./Footer";
+import  Discounts  from "./Discount ";
 
 export default function LandingPage() {
   return (
@@ -12,6 +13,7 @@ export default function LandingPage() {
       <Header />
       <Hero />
       <Categories />
+      <Discounts />
       <FeaturedProducts />
       <Newsletter />
       <Footer />
