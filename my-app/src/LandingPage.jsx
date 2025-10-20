@@ -1,22 +1,24 @@
 import React from "react";
 import Header from "./Header";
-import Hero from "./hero";
+import Hero from "./Hero";
 import Categories from "./Categories";
+import Discount from "./Discount";
 import FeaturedProducts from "./FeaturedProducts";
 import Newsletter from "./Newsletter";
 import Footer from "./Footer";
-import  Discounts  from "./Discount ";
 
-export default function LandingPage() {
+function LandingPage() {
   return (
     <>
       <Header />
       <Hero />
       <Categories />
-      <Discounts />
+      <Discount />
       <FeaturedProducts />
       <Newsletter />
       <Footer />
     </>
   );
 }
+
+export default LandingPage;

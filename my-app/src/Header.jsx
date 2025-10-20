@@ -1,9 +1,11 @@
 import React from "react";
- function Header() {
+import { Link } from "react-router-dom";
+
+function Header() {
   return (
-    <nav className="navbar navbar-expand-lg sticky-top bg-primary  border-bottom">
+    <nav className="navbar navbar-expand-lg sticky-top bg-primary border-bottom">
       <div className="container-fluid">
-        <a className="navbar-brand fw-bold text-white" >ZStore</a>
+        <Link className="navbar-brand fw-bold text-white" to="/">ShopX</Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -12,22 +14,37 @@ import React from "react";
         >
           <i className="bi bi-list text-white"></i>
         </button>
+
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item"><a className="nav-link text-white active" href="#">Home</a></li>
-            <li className="nav-item"><a className="nav-link text-white" href="#">Shop</a></li>
-            <li className="nav-item"><a className="nav-link text-white" href="#">About</a></li>
-            <li className="nav-item"><a className="nav-link text-white" href="#">Contact</a></li>
+            <li className="nav-item"><Link className="nav-link text-white" to="/">Home</Link></li>
+            <li className="nav-item"><Link className="nav-link text-white" to="/shop">Shop</Link></li>
+            <li className="nav-item"><Link className="nav-link text-white" to="/about">About</Link></li>
+            <li className="nav-item"><Link className="nav-link text-white" to="/contact">Contact</Link></li>
           </ul>
+
           <div className="d-flex align-items-center">
             <i className="bi bi-search me-3 text-white"></i>
             <i className="bi bi-heart me-3 text-white"></i>
             <i className="bi bi-cart3 me-3 text-white"></i>
-            <i className="bi bi-person text-white"></i>
+
+          
+            <div className="dropdown">
+              <i
+                className="bi bi-person text-white dropdown-toggle"
+                role="button"
+                data-bs-toggle="dropdown"
+              ></i>
+              <ul className="dropdown-menu dropdown-menu-end">
+                <li><Link className="dropdown-item" to="/login">Login</Link></li>
+                <li><Link className="dropdown-item" to="/register">Register</Link></li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </nav>
   );
 }
+
 export default Header;

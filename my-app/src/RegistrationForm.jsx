@@ -1,24 +1,21 @@
 import React from "react";
 
-export default function RegistrationForm() {
+ function RegistrationForm() {
   return (
     <div
       className="d-flex justify-content-center align-items-center vh-100"
-      style={{
-        background: "linear-gradient(135deg, #cb5f11ff 0%, #2575fc 100%)",
-      }}
     >
       <div
         className="p-5 bg-white rounded shadow-lg"
         style={{ width: "420px", borderRadius: "18px" }}
       >
-        {/* Logo */}
-        <h2 className="text-center fw-bold mb-1" style={{ color: "#2575fc" }}>
+       
+        <h2 className="text-center fw-bold mb-1" style={{ color: "#043273ff" }}>
           ZStore
         </h2>
         <p className="text-center text-muted mb-4">Create Account</p>
 
-        {/* Form */}
+       
         <form>
           <div className="mb-3">
             <input
@@ -65,7 +62,7 @@ export default function RegistrationForm() {
             />
           </div>
 
-          {/* Checkboxes */}
+          
           <div className="form-check mb-2">
             <input
               type="checkbox"
@@ -89,7 +86,7 @@ export default function RegistrationForm() {
             </label>
           </div>
 
-          {/* Button */}
+          
           <button
             type="submit"
             className="btn w-100 text-white"
@@ -101,7 +98,7 @@ export default function RegistrationForm() {
               border: "none",
             }}
           >
-            Register
+            Verify you email
           </button>
         </form>
 
@@ -112,3 +109,4 @@ export default function RegistrationForm() {
     </div>
   );
 }
+export default RegistrationForm;
