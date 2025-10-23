@@ -6,6 +6,7 @@ function Header() {
     <nav className="navbar navbar-expand-lg sticky-top bg-primary border-bottom">
       <div className="container-fluid">
         <Link className="navbar-brand fw-bold text-white" to="/">ShopX</Link>
+
         <button
           className="navbar-toggler"
           type="button"
@@ -28,7 +29,7 @@ function Header() {
             <i className="bi bi-heart me-3 text-white"></i>
             <i className="bi bi-cart3 me-3 text-white"></i>
 
-          
+            
             <div className="dropdown">
               <i
                 className="bi bi-person text-white dropdown-toggle"
@@ -38,6 +39,8 @@ function Header() {
               <ul className="dropdown-menu dropdown-menu-end">
                 <li><Link className="dropdown-item" to="/login">Login</Link></li>
                 <li><Link className="dropdown-item" to="/register">Register</Link></li>
+                <li><hr className="dropdown-divider" /></li>
+                <li><Link className="dropdown-item" to="/admin">Admin Panel</Link></li>
               </ul>
             </div>
           </div>

@@ -16,7 +16,7 @@ export default function ProductDetail() {
   return (
     <div className="container mt-5">
       <div className="row align-items-center">
-        {/* Product Image */}
+        
         <div className="col-md-6 mb-4">
           <img
             src={product.image}
@@ -26,7 +26,6 @@ export default function ProductDetail() {
           />
         </div>
 
-        {/* Product Details */}
         <div className="col-md-6">
           <h2 className="fw-bold mb-3">{product.name}</h2>
 
@@ -54,7 +53,7 @@ export default function ProductDetail() {
             </ul>
           </div>
 
-          {/* Buttons */}
+          
           <div className="mt-4">
             <button className="btn btn-primary me-3">
               Add to Cart
