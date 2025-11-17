@@ -4,7 +4,7 @@
 // import bodyParser from "body-parser";
 // import mongoose from "mongoose";
 // const app = express();
-// const url = "mongodb+srv://anwarzeb:123@cluster0.zc7cnit.mongodb.net/?appName=ShopXdb"
+
 // mongoose.connect(url,{useNewUrlParser:true,useUnifiedTopology:true})
 // .then(()=>console.log("Database is connected"));
 // app.listen(5001)
