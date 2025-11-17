@@ -1,9 +1,34 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { getProductById } from "./services/productService";
 
 export default function ProductDetail() {
-  const location = useLocation();
-  const product = location.state?.product;
+  const { id } = useParams();
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const data = await getProductById(id); 
+        setProduct(data);
+      } catch (err) {
+        console.error("Failed to fetch product:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProduct();
+  }, [id]);
+
+  if (loading) {
+    return (
+      <div className="container mt-5">
+        <p>Loading product...</p>
+      </div>
+    );
+  }
 
   if (!product) {
     return (
@@ -16,7 +41,6 @@ export default function ProductDetail() {
   return (
     <div className="container mt-5">
       <div className="row align-items-center">
-        
         <div className="col-md-6 mb-4">
           <img
             src={product.image}
@@ -53,11 +77,8 @@ export default function ProductDetail() {
             </ul>
           </div>
 
-          
           <div className="mt-4">
-            <button className="btn btn-primary me-3">
-              Add to Cart
-            </button>
+            <button className="btn btn-primary me-3">Add to Cart</button>
             <button
               className="btn btn-outline-secondary"
               onClick={() => window.history.back()}

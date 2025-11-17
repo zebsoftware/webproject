@@ -1,22 +1,26 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { registerUser } from "./services/authService";
 
 function RegistrationForm() {
-  // Add state only for name, email, and password
+  
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // Prevent page reload on form submit
-   const handleSubmit = (e) => {
-    e.preventDefault(); 
-    alert("Form submitted successfully!");
-    
-      setName("");
-      setEmail("");
-      setPassword("");
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const res = await registerUser({ name, email, password });
+    alert(res.message);
+    setName(""); setEmail(""); setPassword("");
+  } catch (error) {
+    console.error(error);
+    alert(error.response?.data?.message || "Registration failed");
+  }
+};
 
-  };
+
 
   return (
     <div className="d-flex justify-content-center align-items-center vh-100">

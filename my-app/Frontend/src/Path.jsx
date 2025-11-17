@@ -14,8 +14,9 @@ import AdminDashboard from "./Admin/AdminDashboard";
 import AdminProducts from "./Admin/AdminProducts";
 import AdminOrders from "./Admin/AdminOrders";
 import AdminUsers from "./Admin/AdminUsers";
-
+import Header from "./Header";
 const route = createBrowserRouter([
+  <Header/>,
   
   { path: "/", element: <LandingPage /> },
   { path: "/shop", element: <Shop /> },

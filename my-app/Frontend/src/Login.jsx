@@ -1,20 +1,24 @@
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
+import { loginUser } from "./services/authService";
+
 function Login() {
-  
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
 
-  
-  const handleSubmit = (e) => {
-    e.preventDefault(); 
-
-    const email = emailRef.current.value;
-    const password = passwordRef.current.value;
-    console.log("Login Data:", { email, password });
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const res = await loginUser(emailRef.current.value, passwordRef.current.value);
+    alert(res.message);
     emailRef.current.value = "";
     passwordRef.current.value = "";
-  };
+  } catch (error) {
+    console.error(error);
+    alert(error.response?.data?.message || "Login failed");
+  }
+};
+
 
   return (
     <div className="d-flex justify-content-center align-items-center vh-100 bg-light">
@@ -30,7 +34,7 @@ function Login() {
               className="form-control"
               placeholder="Email Address"
               required
-              ref={emailRef} 
+              ref={emailRef}
             />
           </div>
 
@@ -40,7 +44,7 @@ function Login() {
               className="form-control"
               placeholder="Password"
               required
-              ref={passwordRef} 
+              ref={passwordRef}
             />
           </div>
 
@@ -60,7 +64,7 @@ function Login() {
         </form>
 
         <p className="text-center mt-3 mb-0 text-muted">
-          Don’t have an account? <Link to ="/register" >Register</Link>
+          Don’t have an account? <Link to="/register">Register</Link>
         </p>
       </div>
     </div>

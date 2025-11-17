@@ -1,6 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
+import { sendContactMessage } from "./services/contactService";
 
 export default function Contact() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await sendContactMessage({ name, email, subject, message });
+      alert(res.message); 
+      setName("");
+      setEmail("");
+      setSubject("");
+      setMessage("");
+    } catch (error) {
+      console.error(error);
+      const msg = error.response?.data?.message || "Failed to send message";
+      alert(msg);
+    }
+  };
+
   return (
     <div className="container py-5">
       {/* Page Header */}
@@ -17,13 +40,15 @@ export default function Contact() {
         <div className="col-lg-8">
           <div className="bg-white p-4 shadow-sm rounded border">
             <h5 className="fw-bold mb-4 text-center text-primary">Send Us a Message</h5>
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="row">
                 <div className="col-md-6 mb-3">
                   <input
                     type="text"
                     className="form-control"
                     placeholder="Your Name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     required
                   />
                 </div>
@@ -32,6 +57,8 @@ export default function Contact() {
                     type="email"
                     className="form-control"
                     placeholder="Your Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     required
                   />
                 </div>
@@ -41,6 +68,8 @@ export default function Contact() {
                   type="text"
                   className="form-control"
                   placeholder="Subject"
+                  value={subject}
+                  onChange={(e) => setSubject(e.target.value)}
                   required
                 />
               </div>
@@ -49,11 +78,16 @@ export default function Contact() {
                   className="form-control"
                   rows="5"
                   placeholder="Your Message"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
                   required
                 ></textarea>
               </div>
 
-              <button className="btn btn-primary w-100 py-2 fw-semibold mb-4">
+              <button
+                type="submit"
+                className="btn btn-primary w-100 py-2 fw-semibold mb-4"
+              >
                 <i className="bi bi-send me-2"></i> Send Message
               </button>
 
@@ -65,7 +99,6 @@ export default function Contact() {
                 <i className="bi bi-twitter-x fs-4 me-3"></i>
                 <i className="bi bi-linkedin text-primary fs-4"></i>
               </div>
-
             </form>
           </div>
         </div>
