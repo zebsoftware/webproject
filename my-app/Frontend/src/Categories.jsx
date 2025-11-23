@@ -1,10 +1,10 @@
 
 
 const categories = [
-  { name: "Clothing", image: "https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=1080", description: "Latest fashion trends" },
-  { name: "Shoes", image: "https://images.unsplash.com/photo-1662037130147-76ed96202474?w=1080", description: "Step in style" },
-  { name: "Accessories", image: "https://images.unsplash.com/photo-1705909237050-7a7625b47fac?w=1080", description: "Complete your look" },
-  { name: "Electronics", image: "https://images.unsplash.com/photo-1645684084216-b52ba9e12aaf?w=1080", description: "Tech essentials" }
+  { name: "Clothing", image: "/images/clothing.png", description: "Latest fashion trends" },
+  { name: "Shoes", image: "/images/shoes.png", description: "Step in style" },
+  { name: "Accessories", image: "/images/accessories.png", description: "Complete your look" },
+  { name: "Electronics", image: "/images/electronic.png", description: "Tech essentials" }
 ];
 
  function Categories() {

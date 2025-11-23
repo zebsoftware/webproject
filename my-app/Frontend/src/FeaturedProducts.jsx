@@ -5,7 +5,7 @@ const products = [
     name: "Premium Modern Jacket", 
     price: 129, 
     originalPrice: 169, 
-    image: "https://images.unsplash.com/photo-1612126490369-1e886517b615?w=1080", 
+    image: "/images/hero.png", 
     isNew: true, 
     isSale: true 
   },
@@ -13,7 +13,7 @@ const products = [
     id: 2, 
     name: "Classic Luxury Watch", 
     price: 299, 
-    image: "https://images.unsplash.com/photo-1667375565651-b660b574d1a9?w=1080", 
+    image: "/images/shoes.png", 
     isNew: true 
   },
   { 
@@ -21,7 +21,7 @@ const products = [
     name: "Designer Sunglasses", 
     price: 159, 
     originalPrice: 199, 
-    image: "https://images.unsplash.com/photo-1523754865311-b886113bb8de?w=1080", 
+    image: "/images/accessories.png", 
     isSale: true 
   },
   { 
@@ -29,7 +29,7 @@ const products = [
     name: "Leather Handbag", 
     price: 249, 
     originalPrice: 299, 
-    image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=1080", 
+    image: "/images/hero.png", 
     isSale: true 
   },
   { 
@@ -37,7 +37,7 @@ const products = [
     name: "Smartphone Pro X", 
     price: 899, 
     originalPrice: 999, 
-    image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1080", 
+    image: "/images/electronic.png", 
     isSale: true 
   },
  

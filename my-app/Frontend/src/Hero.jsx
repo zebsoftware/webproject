@@ -1,7 +1,9 @@
-import React from "react";
- function Hero() {
+function Hero() {
   return (
-    <section className="py-5" style={{ background: "linear-gradient(to right, #f8f9fa, #e9ecef)" }}>
+    <section
+      className="py-5"
+      style={{ background: "linear-gradient(to right, #f8f9fa, #e9ecef)" }}
+    >
       <div className="container">
         <div className="row align-items-center py-4">
           <div className="col-lg-6 mb-4 mb-lg-0">
@@ -20,13 +22,17 @@ import React from "react";
           </div>
           <div className="col-lg-6">
             <div className="position-relative rounded-3 overflow-hidden" style={{ aspectRatio: "4/3" }}>
-              <img 
-                src="https://images.unsplash.com/photo-1731012106552-3e85ed12d420?w=1080"
+              {/* ✅ Correct image path for public folder */}
+              <img
+                src="/images/hero.png"
                 alt="Modern fashion lifestyle"
                 className="w-100 h-100"
                 style={{ objectFit: "cover" }}
               />
-              <div className="position-absolute bg-dark text-white p-3 rounded-3 shadow" style={{ bottom: "-16px", right: "-16px" }}>
+              <div
+                className="position-absolute bg-dark text-white p-3 rounded-3 shadow"
+                style={{ bottom: "-16px", right: "-16px" }}
+              >
                 <div className="text-center">
                   <small className="d-block">Up to</small>
                   <div className="h4 mb-0">50% OFF</div>
@@ -39,4 +45,5 @@ import React from "react";
     </section>
   );
 }
+
 export default Hero;

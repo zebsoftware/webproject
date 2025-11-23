@@ -3,38 +3,52 @@ import { Link } from "react-router-dom";
 import { registerUser } from "./services/authService";
 
 function RegistrationForm() {
-  
+  // Form state
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [terms, setTerms] = useState(false);
+  const [newsletter, setNewsletter] = useState(false);
 
- const handleSubmit = async (e) => {
-  e.preventDefault();
-  try {
-    const res = await registerUser({ name, email, password });
-    alert(res.message);
-    setName(""); setEmail(""); setPassword("");
-  } catch (error) {
-    console.error(error);
-    alert(error.response?.data?.message || "Registration failed");
-  }
-};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
+    if (password !== confirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
 
+    if (!terms) {
+      alert("You must agree to the Terms & Conditions");
+      return;
+    }
+
+    try {
+      const res = await registerUser({ name, email, phone, password, newsletter });
+      alert(res.message);
+      // Reset form
+      setName("");
+      setEmail("");
+      setPhone("");
+      setPassword("");
+      setConfirmPassword("");
+      setTerms(false);
+      setNewsletter(false);
+    } catch (error) {
+      console.error(error);
+      alert(error.response?.data?.message || "Registration failed");
+    }
+  };
 
   return (
     <div className="d-flex justify-content-center align-items-center vh-100">
-      <div
-        className="p-5 bg-white rounded shadow-lg"
-        style={{ width: "420px", borderRadius: "18px" }}
-      >
-        <h2 className="text-center fw-bold mb-1" style={{ color: "#043273ff" }}>
-          ZStore
-        </h2>
+      <div className="p-5 bg-white rounded shadow-lg" style={{ width: "420px", borderRadius: "18px" }}>
+        <h2 className="text-center fw-bold mb-1" style={{ color: "#043273ff" }}>ZStore</h2>
         <p className="text-center text-muted mb-4">Create Account</p>
 
         <form onSubmit={handleSubmit}>
-          {/* Full Name */}
           <div className="mb-3">
             <input
               type="text"
@@ -46,7 +60,6 @@ function RegistrationForm() {
             />
           </div>
 
-          {/* Email */}
           <div className="mb-3">
             <input
               type="email"
@@ -58,17 +71,17 @@ function RegistrationForm() {
             />
           </div>
 
-          {/* Phone (unchanged, no state) */}
           <div className="mb-3">
             <input
               type="tel"
               className="form-control"
               placeholder="Phone Number"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
               required
             />
           </div>
 
-          {/* Password */}
           <div className="mb-3">
             <input
               type="password"
@@ -80,22 +93,24 @@ function RegistrationForm() {
             />
           </div>
 
-          {/* Confirm Password (unchanged) */}
           <div className="mb-4">
             <input
               type="password"
               className="form-control"
               placeholder="Confirm Password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
           </div>
 
-          {/* Checkboxes (unchanged) */}
           <div className="form-check mb-2">
             <input
               type="checkbox"
               className="form-check-input"
               id="terms"
+              checked={terms}
+              onChange={(e) => setTerms(e.target.checked)}
               required
             />
             <label className="form-check-label small" htmlFor="terms">
@@ -108,13 +123,14 @@ function RegistrationForm() {
               type="checkbox"
               className="form-check-input"
               id="newsletter"
+              checked={newsletter}
+              onChange={(e) => setNewsletter(e.target.checked)}
             />
             <label className="form-check-label small" htmlFor="newsletter">
               Subscribe to our Newsletter
             </label>
           </div>
 
-          {/* Submit Button */}
           <button
             type="submit"
             className="btn w-100 text-white"
@@ -131,7 +147,7 @@ function RegistrationForm() {
         </form>
 
         <p className="text-center mt-3 mb-0 text-muted">
-          Already have an account? <Link to ="/login" >Login</Link>
+          Already have an account? <Link to="/login">Login</Link>
         </p>
       </div>
     </div>

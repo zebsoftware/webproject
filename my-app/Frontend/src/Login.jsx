@@ -1,24 +1,34 @@
 import React, { useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "./services/authService";
 
 function Login() {
-  const emailRef = useRef(null);
-  const passwordRef = useRef(null);
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  try {
-    const res = await loginUser(emailRef.current.value, passwordRef.current.value);
-    alert(res.message);
-    emailRef.current.value = "";
-    passwordRef.current.value = "";
-  } catch (error) {
-    console.error(error);
-    alert(error.response?.data?.message || "Login failed");
-  }
-};
+    e.preventDefault();
 
+    try {
+      // Call login API
+      const res = await loginUser(emailRef.current.value, passwordRef.current.value);
+
+      // Store token in localStorage
+      localStorage.setItem("token", res.token);
+
+      alert(res.message || "Login Successful!");
+
+      // Redirect to dashboard
+      navigate("/");
+
+      // Clear input fields
+      emailRef.current.value = "";
+      passwordRef.current.value = "";
+    } catch (error) {
+      alert(error.message || "Invalid email or password");
+    }
+  };
 
   return (
     <div className="d-flex justify-content-center align-items-center vh-100 bg-light">
@@ -31,20 +41,20 @@ function Login() {
           <div className="mb-3">
             <input
               type="email"
+              ref={emailRef}
               className="form-control"
               placeholder="Email Address"
               required
-              ref={emailRef}
             />
           </div>
 
           <div className="mb-4">
             <input
               type="password"
+              ref={passwordRef}
               className="form-control"
               placeholder="Password"
               required
-              ref={passwordRef}
             />
           </div>
 

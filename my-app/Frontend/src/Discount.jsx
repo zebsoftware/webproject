@@ -7,7 +7,7 @@ const discountDeals = [
     subtitle: "Home essentials",
     description: "Kitchen, bath & more",
     image:
-      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1080&q=80",
+      "/images/hero.png",
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ const discountDeals = [
     subtitle: "Beauty favorites",
     description: "Select skincare & makeup",
     image:
-      "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=1080&q=80",
+      "/images/clothing.png",
   },
   {
     id: 3,
@@ -23,7 +23,7 @@ const discountDeals = [
     subtitle: "Athletic wear",
     description: "Men's & women's activewear",
     image:
-      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1080&q=80",
+      "/images/shoes.png",
   },
 ];
 
