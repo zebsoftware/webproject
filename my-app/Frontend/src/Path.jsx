@@ -8,7 +8,7 @@ import Contact from "./Contact";
 import Login from "./Login";
 import RegistrationForm from "./RegistrationForm";
 import ProductDetail from "./ProductDetail";
-
+import Checkout from "./Checkout";
 
 import AdminDashboard from "./Admin/AdminDashboard";
 import AdminProducts from "./Admin/AdminProducts";
@@ -30,6 +30,8 @@ const route = createBrowserRouter([
   { path: "/admin/products", element: <AdminProducts /> },
   { path: "/admin/orders", element: <AdminOrders /> },
   { path: "/admin/users", element: <AdminUsers /> },
+   { path: "/checkout", element: <Checkout /> },
 ]);
+
 
 export default route;

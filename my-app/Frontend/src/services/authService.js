@@ -3,7 +3,7 @@ import api from "./api";
 // POST login
 export const loginUser = async (email, password) => {
   try {
-    const response = await api.post("/login", { email, password });
+    const response = await api.post("/api/login", { email, password });
     return response.data; // { message, token }
   } catch (error) {
     // Throw error with backend message
@@ -14,7 +14,7 @@ export const loginUser = async (email, password) => {
 // POST registration form
 export const registerUser = async (userData) => {
   try {
-    const response = await api.post("/register", userData);
+    const response = await api.post("/api/register", userData);
     return response.data;
   } catch (error) {
     throw new Error(error.response?.data?.message || "Registration failed");

@@ -46,7 +46,7 @@ export default function Shop() {
                 <div style={{ position: "relative" }}>
                   <img
                     // Prepend backend URL if image path is relative
-                    src={p.image?.startsWith("http") ? p.image : `http://localhost:5000${p.image}`}
+                    src={p.image?.startsWith("http") ? p.image : `https://backend-16lc.onrender.com${p.image}`}
                     className="card-img-top"
                     alt={p.name}
                     style={{ height: "240px", objectFit: "cover" }}

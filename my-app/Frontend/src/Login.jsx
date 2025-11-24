@@ -16,11 +16,11 @@ function Login() {
 
       // Store token in localStorage
       localStorage.setItem("token", res.token);
-
+ 
       alert(res.message || "Login Successful!");
 
       // Redirect to dashboard
-      navigate("/");
+      navigate("/admin");
 
       // Clear input fields
       emailRef.current.value = "";

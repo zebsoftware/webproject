@@ -22,6 +22,10 @@ function Header() {
             <li className="nav-item"><Link className="nav-link text-white" to="/shop">Shop</Link></li>
             <li className="nav-item"><Link className="nav-link text-white" to="/about">About</Link></li>
             <li className="nav-item"><Link className="nav-link text-white" to="/contact">Contact</Link></li>
+             <li className="nav-item"><Link className="nav-link btn btn-primary text-white ms-2" to="/checkout"> Checkout</Link></li>
+            <li className="nav-item">
+         
+</li>
           </ul>
 
           <div className="d-flex align-items-center">

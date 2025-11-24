@@ -1,26 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { getProductById } from "./services/productService";
 
 export default function ProductDetail() {
   const { id } = useParams();
-  const [product, setProduct] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const location = useLocation();
+  const [product, setProduct] = useState(location.state?.product || null);
+  const [loading, setLoading] = useState(!product); // skip loading if state exists
 
   useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        const data = await getProductById(id); 
+    if (!product) {
+      const fetchProduct = async () => {
+        setLoading(true);
+        const data = await getProductById(id);
         setProduct(data);
-      } catch (err) {
-        console.error("Failed to fetch product:", err);
-      } finally {
         setLoading(false);
-      }
-    };
-
-    fetchProduct();
-  }, [id]);
+      };
+      fetchProduct();
+    }
+  }, [id, product]);
 
   if (loading) {
     return (
@@ -43,16 +41,14 @@ export default function ProductDetail() {
       <div className="row align-items-center">
         <div className="col-md-6 mb-4">
           <img
-            src={product.image}
+            src={product.image?.startsWith("http") ? product.image : `https://backend-16lc.onrender.com${product.image}`}
             alt={product.name}
             className="img-fluid rounded shadow-sm"
             style={{ maxHeight: "500px", objectFit: "cover" }}
           />
         </div>
-
         <div className="col-md-6">
           <h2 className="fw-bold mb-3">{product.name}</h2>
-
           {product.originalPrice ? (
             <h4 className="mb-3">
               <span className="text-muted text-decoration-line-through me-2">
@@ -63,9 +59,7 @@ export default function ProductDetail() {
           ) : (
             <h4 className="text-primary mb-3 fw-bold">${product.price}</h4>
           )}
-
           <p className="text-muted mb-4">{product.description}</p>
-
           <div className="border-top pt-3">
             <h6 className="fw-semibold mb-2">Why You’ll Love It:</h6>
             <ul className="list-unstyled">
@@ -76,13 +70,9 @@ export default function ProductDetail() {
               <li>Secure online payment</li>
             </ul>
           </div>
-
           <div className="mt-4">
             <button className="btn btn-primary me-3">Add to Cart</button>
-            <button
-              className="btn btn-outline-secondary"
-              onClick={() => window.history.back()}
-            >
+            <button className="btn btn-outline-secondary" onClick={() => window.history.back()}>
               Go Back
             </button>
           </div>

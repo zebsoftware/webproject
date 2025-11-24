@@ -42,7 +42,8 @@ function AdminProducts() {
     const [loading, setLoading] = useState(false);
     
     // 🎯 FIX 1: Corrected API_BASE_URL definition
-    const API_BASE_URL = "http://localhost:5000"; 
+    const API_BASE_URL = "https://backend-16lc.onrender.com";
+ 
 
     const {
         register,
